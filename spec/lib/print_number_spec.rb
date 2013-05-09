@@ -122,4 +122,63 @@ describe PrintNumber do
       end
     end
   end
+
+  context 'millions' do
+    context 'ones' do
+      context 'simple' do
+        let(:numbers) {[1000000, 4000000, 7000000]}
+        let(:text) {['One Million', 'Four Million', 'Seven Million']}
+
+        it_behaves_like 'text for numbers'
+      end
+
+      context 'complex' do
+        let(:numbers) {[1701122, 4357778, 7011235, 9000009]}
+        let(:text) {['One Million Seven Hundred and One Thousand One Hundred and Twenty Two',
+                     'Four Million Three Hundred and Fifty Seven Thousand Seven Hundred and Seventy Eight',
+                     'Seven Million Eleven Thousand Two Hundred and Thirty Five',
+                     'Nine Million and Nine']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+
+    context 'tens' do
+      context 'simple' do
+        let(:numbers) {[10000000, 40000000, 70000000]}
+        let(:text) {['Ten Million', 'Forty Million', 'Seventy Million']}
+
+        it_behaves_like 'text for numbers'
+      end
+
+      context 'complex' do
+        let(:numbers) {[17011228, 43577789, 70112351, 90000007]}
+        let(:text) {['Seventeen Million Eleven Thousand Two Hundred and Twenty Eight',
+                     'Forty Three Million Five Hundred and Seventy Seven Thousand Seven Hundred and Eighty Nine',
+                     'Seventy Million One Hundred and Twelve Thousand Three Hundred and Fifty One',
+                     'Ninety Million and Seven']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+
+    context 'hundreds' do
+      context 'simple' do
+        let(:numbers) {[100000000, 400000000, 700000000]}
+        let(:text) {['One Hundred Million', 'Four Hundred Million', 'Seven Hundred Million']}
+
+        it_behaves_like 'text for numbers'
+      end
+
+      context 'complex' do
+        let(:numbers) {[170112281, 435777899, 701123515, 900000007]}
+        let(:text) {['One Hundred and Seventy Million One Hundred and Twelve Thousand Two Hundred and Eighty One',
+                     'Four Hundred and Thirty Five Million Seven Hundred and Seventy Seven Thousand Eight Hundred and Ninety Nine',
+                     'Seven Hundred and One Million One Hundred and Twenty Three Thousand Five Hundred and Fifteen',
+                     'Nine Hundred Million and Seven']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+  end
 end

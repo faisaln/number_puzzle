@@ -10,7 +10,7 @@ module PrintNumber
       @number = b.to_i
       text += "and " if (i == blocks.length - 1 && b[0] == '0' && @number != 0)
       text += "#{convert_to_text}#{block_names[blocks.length - i -1]}" unless (@number == 0 && blocks.length > 1)
-      text += " " unless i == blocks.length - 1
+      text += " " unless i == blocks.length - 1 || @number == 0
     end
 
     text.strip

@@ -3,16 +3,6 @@ require 'spec_helper'
 describe PrintNumber do
   include PrintNumber
 
-  it 'counts number of digits' do
-    number_of_digits(1).should be(1)
-    number_of_digits(33).should be(2)
-    number_of_digits(3377).should be(4)
-    number_of_digits(0000).should_not be(4)
-    number_of_digits(0000).should be(1)
-    number_of_digits(20).should be(2)
-    number_of_digits(300).should be(3)
-  end
-
   context 'single digits' do
     digit_text = %w[Zero One Two Three Four Five Six Seven Eight Nine]
 

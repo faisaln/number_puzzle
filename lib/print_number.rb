@@ -16,7 +16,7 @@ module PrintNumber
         "#{tens_text[number / 10]} #{digit_text[number % 10]}"
       end
     elsif number_of_digits == 3
-      "#{digit_text[digit(1)]} #{hundred}"
+      "#{digit_text[digit(1)]} #{hundred}" + (number % 100 == 0 ? "" : " and #{print(chop_head)}")
     else
       digit_text[number]
     end
@@ -36,6 +36,10 @@ module PrintNumber
   # digit number if 1 based, as used in regular English
   def digit(digit_number)
     digits[digit_number - 1].to_i
+  end
+
+  def chop_head
+    digits.reverse.chop.reverse.to_i
   end
 
   def digit_text

@@ -54,5 +54,17 @@ describe PrintNumber do
         end
       end
     end
+
+    context 'numbers other than hundreds' do
+      numbers = [101, 221, 376, 999]
+      text = ['One Hundred and One', 'Two Hundred and Twenty One', 'Three Hundred and Seventy Six', \
+       'Nine Hundred and Ninety Nine']
+
+      it 'prints text for numbers' do
+        for i in 0...numbers.length
+          print(numbers[i]).should == text[i]
+        end
+      end
+    end
   end
 end

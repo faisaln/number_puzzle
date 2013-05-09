@@ -4,13 +4,13 @@ describe PrintNumber do
   include PrintNumber
 
   it 'counts number of digits' do
-    digits(1).should be(1)
-    digits(33).should be(2)
-    digits(3377).should be(4)
-    digits(0000).should_not be(4)
-    digits(0000).should be(1)
-    digits(20).should be(2)
-    digits(300).should be(3)
+    number_of_digits(1).should be(1)
+    number_of_digits(33).should be(2)
+    number_of_digits(3377).should be(4)
+    number_of_digits(0000).should_not be(4)
+    number_of_digits(0000).should be(1)
+    number_of_digits(20).should be(2)
+    number_of_digits(300).should be(3)
   end
 
   context 'single digits' do

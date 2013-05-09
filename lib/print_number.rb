@@ -1,6 +1,6 @@
 module PrintNumber
   def print(number)
-    if digits(number) == 2
+    if number_of_digits(number) == 2
       if number % 10 == 0
         tens_text[number / 10]
       elsif (11..19).include? number
@@ -17,7 +17,11 @@ module PrintNumber
   private
 
   def digits(number)
-    number.to_s.length
+    number.to_s
+  end
+
+  def number_of_digits(number)
+    digits(number).length
   end
 
   def digit_text

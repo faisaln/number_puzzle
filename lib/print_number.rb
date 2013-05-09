@@ -1,7 +1,12 @@
 module PrintNumber
   def print(number)
-    digits(number) == 2 ? tens_text[number / 10] : digit_text[number]
+    if digits(number) == 2
+      number % 10 == 0 ? tens_text[number / 10] : eleven_nineteen[number - 10 - 1]
+    else
+      digit_text[number]
+    end
   end
+
 
   private
 
@@ -15,5 +20,9 @@ module PrintNumber
 
   def tens_text
     @tens_text ||= %w[Zero Ten Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety]
+  end
+
+  def eleven_nineteen
+    eleven_nineteen= %w[Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen]
   end
 end

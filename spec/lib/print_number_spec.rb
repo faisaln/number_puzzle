@@ -33,5 +33,15 @@ describe PrintNumber do
         end
       end
     end
+
+    context 'numbers from 11 to 19' do
+      eleven_nineteen = %w[Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen]
+
+      it 'prints text for numbers from 11 to 19' do
+        (11..19).each do |i|
+          print(i).should == eleven_nineteen[i - 10 - 1]
+        end
+      end
+    end
   end
 end

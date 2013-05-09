@@ -15,6 +15,8 @@ module PrintNumber
       else
         "#{tens_text[number / 10]} #{digit_text[number % 10]}"
       end
+    elsif number_of_digits == 3
+      "#{digit_text[digit(1)]} #{hundred}"
     else
       digit_text[number]
     end
@@ -31,6 +33,11 @@ module PrintNumber
     digits.length
   end
 
+  # digit number if 1 based, as used in regular English
+  def digit(digit_number)
+    digits[digit_number - 1].to_i
+  end
+
   def digit_text
     @digit_text ||= %w[Zero One Two Three Four Five Six Seven Eight Nine]
   end
@@ -41,6 +48,10 @@ module PrintNumber
 
   def eleven_nineteen
     eleven_nineteen= %w[Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen]
+  end
+
+  def hundred
+    'Hundred'
   end
 
   def number

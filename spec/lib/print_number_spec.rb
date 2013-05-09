@@ -42,4 +42,17 @@ describe PrintNumber do
       specify {print(99).should == 'Ninety Nine'}
     end
   end
+
+  context '3 digit numbers' do
+    context 'hundreds' do
+      text = ['One Hundred', 'Four Hundred', 'Seven Hundred']
+      numbers = [100, 400, 700]
+
+      it 'prints text for hundreds' do
+        for i in 0...numbers.length
+          print(numbers[i]).should == text[i]
+        end
+      end
+    end
+  end
 end

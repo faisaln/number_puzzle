@@ -7,23 +7,32 @@ module PrintNumber
   end
 
   def convert_to_text
-    if number_of_digits == 2
-      if number % 10 == 0
-        tens_text[number / 10]
-      elsif (11..19).include? number
-        eleven_nineteen[number - 10 - 1]
-      else
-        "#{tens_text[number / 10]} #{digit_text[number % 10]}"
-      end
-    elsif number_of_digits == 3
-      "#{digit_text[digit(1)]} #{hundred}" + (number % 100 == 0 ? "" : " and #{print(chop_head)}")
-    else
-      digit_text[number]
-    end
+    send "text_for_#{number_of_digits}_digit_number"
   end
 
 
   private
+
+  # number processor methods
+  def text_for_1_digit_number
+    digit_text[number]
+  end
+
+  def text_for_2_digit_number
+    if number % 10 == 0
+      tens_text[number / 10]
+    elsif (11..19).include? number
+      eleven_nineteen[number - 10 - 1]
+    else
+      "#{tens_text[number / 10]} #{digit_text[number % 10]}"
+    end
+  end
+
+  def text_for_3_digit_number
+    "#{digit_text[digit(1)]} #{hundred}" + (number % 100 == 0 ? "" : " and #{print(chop_head)}")
+  end
+
+  #utility methods
 
   def digits
     number.to_s

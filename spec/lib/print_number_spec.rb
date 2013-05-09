@@ -67,4 +67,33 @@ describe PrintNumber do
       it_behaves_like 'text for numbers'
     end
   end
+
+  context 'thousands' do
+    context 'ones' do
+      context 'simple' do
+        let(:numbers) {[1000, 4000, 7000]}
+        let(:text) {['One Thousand', 'Four Thousand', 'Seven Thousand']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+
+    context 'tens' do
+      context 'simple' do
+        let(:numbers) {[10000, 40000, 70000]}
+        let(:text) {['Ten Thousand', 'Forty Thousand', 'Seventy Thousand']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+
+    context 'hundreds' do
+      context 'simple' do
+        let(:numbers) {[100000, 400000, 700000]}
+        let(:text) {['One Hundred Thousand', 'Four Hundred Thousand', 'Seven Hundred Thousand']}
+
+        it_behaves_like 'text for numbers'
+      end
+    end
+  end
 end

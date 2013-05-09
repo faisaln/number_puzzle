@@ -32,6 +32,18 @@ module PrintNumber
     "#{digit_text[digit(1)]} #{hundred}" + (number % 100 == 0 ? "" : " and #{print(chop_head)}")
   end
 
+  def text_for_4_digit_number
+    "#{digit_text[digit(1)]} Thousand"
+  end
+
+  def text_for_5_digit_number
+    "#{print(get_head(2))} Thousand"
+  end
+
+  def text_for_6_digit_number
+    "#{print(get_head(3))} Thousand"
+  end
+
   #utility methods
 
   def digits
@@ -49,6 +61,14 @@ module PrintNumber
 
   def chop_head
     digits.reverse.chop.reverse.to_i
+  end
+
+  def get_head(number_of_digits)
+    digits[0...number_of_digits].to_i
+  end
+
+  def get_tail(number_of_digits)
+    digits[(digits.length - number_of_digits)...digits.length].to_i
   end
 
   def digit_text

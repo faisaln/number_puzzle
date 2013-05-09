@@ -1,6 +1,13 @@
 module PrintNumber
-  def print(number)
-    if number_of_digits(number) == 2
+  attr_reader :number
+
+  def print(input_number)
+    @number = input_number
+    convert_to_text
+  end
+
+  def convert_to_text
+    if number_of_digits == 2
       if number % 10 == 0
         tens_text[number / 10]
       elsif (11..19).include? number
@@ -16,12 +23,12 @@ module PrintNumber
 
   private
 
-  def digits(number)
+  def digits
     number.to_s
   end
 
-  def number_of_digits(number)
-    digits(number).length
+  def number_of_digits
+    digits.length
   end
 
   def digit_text
@@ -34,5 +41,9 @@ module PrintNumber
 
   def eleven_nineteen
     eleven_nineteen= %w[Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen]
+  end
+
+  def number
+    @number
   end
 end

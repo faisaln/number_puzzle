@@ -43,5 +43,13 @@ describe PrintNumber do
         end
       end
     end
+
+    context 'numbers from 21 to 99 other than tens' do
+      specify {print(21).should == 'Twenty One'}
+      specify {print(34).should == 'Thirty Four'}
+      specify {print(62).should == 'Sixty Two'}
+      specify {print(77).should == 'Seventy Seven'}
+      specify {print(99).should == 'Ninety Nine'}
+    end
   end
 end

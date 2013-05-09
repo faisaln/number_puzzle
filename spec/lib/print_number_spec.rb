@@ -61,7 +61,7 @@ describe PrintNumber do
 
     context 'numbers other than hundreds' do
       let(:numbers) {[101, 221, 376, 999]}
-      let(:text) {['One Hundred and One', 'Two Hundred and Twenty One', 'Three Hundred and Seventy Six', \
+      let(:text) {['One Hundred and One', 'Two Hundred and Twenty One', 'Three Hundred and Seventy Six',
        'Nine Hundred and Ninety Nine']}
 
       it_behaves_like 'text for numbers'
@@ -76,6 +76,14 @@ describe PrintNumber do
 
         it_behaves_like 'text for numbers'
       end
+
+      context 'complex' do
+        let(:numbers) {[1701, 4357, 7011, 9001]}
+        let(:text) {['One Thousand Seven Hundred and One', 'Four Thousand Three Hundred and Fifty Seven',
+                      'Seven Thousand and Eleven', 'Nine Thousand and One']}
+
+        it_behaves_like 'text for numbers'
+      end
     end
 
     context 'tens' do
@@ -85,12 +93,30 @@ describe PrintNumber do
 
         it_behaves_like 'text for numbers'
       end
+
+      context 'complex' do
+        let(:numbers) {[10010, 44567, 70003, 80798]}
+        let(:text) {['Ten Thousand and Ten', 'Forty Four Thousand Five Hundred and Sixty Seven',
+                        'Seventy Thousand and Three', 'Eighty Thousand Seven Hundred and Ninety Eight']}
+
+        it_behaves_like 'text for numbers'
+      end
     end
 
     context 'hundreds' do
       context 'simple' do
         let(:numbers) {[100000, 400000, 700000]}
         let(:text) {['One Hundred Thousand', 'Four Hundred Thousand', 'Seven Hundred Thousand']}
+
+        it_behaves_like 'text for numbers'
+      end
+
+      context 'complex' do
+        let(:numbers) {[101022, 489000, 700001, 899977]}
+        let(:text) {['One Hundred and One Thousand and Twenty Two',
+                     'Four Hundred and Eighty Nine Thousand',
+                     'Seven Hundred Thousand and One',
+                     'Eight Hundred and Ninety Nine Thousand Nine Hundred and Seventy Seven']}
 
         it_behaves_like 'text for numbers'
       end

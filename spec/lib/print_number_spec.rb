@@ -3,6 +3,14 @@ require 'spec_helper'
 describe PrintNumber do
   include PrintNumber
 
+  shared_examples "text for numbers" do
+    it 'prints text for numbers' do
+      for i in 0...numbers.length
+        print(numbers[i]).should == text[i]
+      end
+    end
+  end
+
   context 'single digits' do
     digit_text = %w[Zero One Two Three Four Five Six Seven Eight Nine]
 
@@ -45,26 +53,18 @@ describe PrintNumber do
 
   context '3 digit numbers' do
     context 'hundreds' do
-      text = ['One Hundred', 'Four Hundred', 'Seven Hundred']
-      numbers = [100, 400, 700]
+      let(:text) {['One Hundred', 'Four Hundred', 'Seven Hundred']}
+      let(:numbers) {[100, 400, 700]}
 
-      it 'prints text for hundreds' do
-        for i in 0...numbers.length
-          print(numbers[i]).should == text[i]
-        end
-      end
+      it_behaves_like 'text for numbers'
     end
 
     context 'numbers other than hundreds' do
-      numbers = [101, 221, 376, 999]
-      text = ['One Hundred and One', 'Two Hundred and Twenty One', 'Three Hundred and Seventy Six', \
-       'Nine Hundred and Ninety Nine']
+      let(:numbers) {[101, 221, 376, 999]}
+      let(:text) {['One Hundred and One', 'Two Hundred and Twenty One', 'Three Hundred and Seventy Six', \
+       'Nine Hundred and Ninety Nine']}
 
-      it 'prints text for numbers' do
-        for i in 0...numbers.length
-          print(numbers[i]).should == text[i]
-        end
-      end
+      it_behaves_like 'text for numbers'
     end
   end
 end

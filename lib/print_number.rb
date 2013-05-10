@@ -3,6 +3,7 @@ module PrintNumber
 
   def print(input_number)
     @number = input_number
+    return error_message if number_of_digits > 9
 
     blocks = three_digit_blocks
     text = ''
@@ -79,6 +80,11 @@ module PrintNumber
 
   def chop_head
     digits[1...digits.length].to_i
+  end
+
+  #error handling
+  def error_message
+    "Numbers with more than nine digits are not supported"
   end
 
   # data

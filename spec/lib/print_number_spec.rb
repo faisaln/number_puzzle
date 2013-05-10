@@ -11,6 +11,10 @@ describe PrintNumber do
     end
   end
 
+  it 'does not accept numbers with 10 digits or more' do
+    print(1000000000).should == "Numbers with more than nine digits are not supported"
+  end
+
   context 'single digits' do
     digit_text = %w[Zero One Two Three Four Five Six Seven Eight Nine]
 

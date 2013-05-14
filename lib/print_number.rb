@@ -36,6 +36,7 @@ module PrintNumber
     errors.clear
     @errors << type_error if (@number.to_s =~ /\d+/).nil?
     @errors << length_error if number_of_digits > 9
+    @errors << decimal_error if @number.to_s.include? '.'
   end
 
   def print_error
@@ -115,6 +116,10 @@ module PrintNumber
 
   def type_error
     "Non-numeric input is not supported"
+  end
+
+  def decimal_error
+    "Only whole numbers are supported"
   end
 
   def prefix

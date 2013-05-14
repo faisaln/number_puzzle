@@ -24,6 +24,10 @@ describe PrintNumber do
     print('abc').should == "Non-numeric input is not supported"
   end
 
+  it 'does not accept numbers with decimals' do
+    print('1.01').should == "Only whole numbers are supported"
+  end
+
   context 'single digits' do
     digit_text = %w[Zero One Two Three Four Five Six Seven Eight Nine]
 

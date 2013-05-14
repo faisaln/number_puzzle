@@ -4,7 +4,7 @@ module PrintNumber
   def print(input_number)
     @number = input_number
     pre_process_input
-    return error_message if number_of_digits > 9
+    return print_error if errors.count > 0
 
     blocks = three_digit_blocks
     text = prefix
@@ -22,11 +22,24 @@ module PrintNumber
   private
 
   def pre_process_input
+    check_for_errors
+    return if errors.count > 0
+
     @number = @number.to_i
     if @number < 0
       @prefix = 'Minus '
       @number *= -1
     end
+  end
+
+  def check_for_errors
+    errors.clear
+    @errors << type_error if (@number.to_s =~ /\d+/).nil?
+    @errors << length_error if number_of_digits > 9
+  end
+
+  def print_error
+    errors.reduce(:<<)
   end
 
   # processor methods
@@ -92,8 +105,16 @@ module PrintNumber
   end
 
   #error handling
-  def error_message
+  def errors
+    @errors ||= []
+  end
+
+  def length_error
     "Numbers with more than nine digits are not supported"
+  end
+
+  def type_error
+    "Non-numeric input is not supported"
   end
 
   def prefix

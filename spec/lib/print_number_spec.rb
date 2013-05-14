@@ -20,6 +20,10 @@ describe PrintNumber do
     print(-1).should == 'Minus One'
   end
 
+  it 'does not accept non-numeric input' do
+    print('abc').should == "Non-numeric input is not supported"
+  end
+
   context 'single digits' do
     digit_text = %w[Zero One Two Three Four Five Six Seven Eight Nine]
 

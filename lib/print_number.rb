@@ -23,8 +23,9 @@ module PrintNumber
 
   def pre_process_input
     check_for_errors
-    return if errors.count > 0
+  end
 
+  def process_sign
     @number = @number.to_i
     if @number < 0
       @prefix = 'Minus '
@@ -34,13 +35,15 @@ module PrintNumber
 
   def check_for_errors
     errors.clear
-    @errors << type_error if (@number.to_s =~ /\d+/).nil?
+    return @errors << type_error unless (@number.to_s =~ /[^\d+-.]/).nil?
+    @errors << decimal_error unless (@number.to_s =~ /[.]/).nil?
+
+    process_sign
     @errors << length_error if number_of_digits > 9
-    @errors << decimal_error if @number.to_s.include? '.'
   end
 
   def print_error
-    errors.reduce(:<<)
+    errors.map{|s| s += "\n"}.reduce(:+)
   end
 
   # processor methods

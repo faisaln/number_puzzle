@@ -12,20 +12,25 @@ describe PrintNumber do
   end
 
   it 'does not accept numbers with 10 digits or more' do
-    print(1000000000).should == "Numbers with more than nine digits are not supported"
-    print(-1000000000).should == "Numbers with more than nine digits are not supported"
+    print(1000000000).should include "Numbers with more than nine digits are not supported\n"
+    print(-1000000000).should include "Numbers with more than nine digits are not supported\n"
   end
 
   it 'should add Minus in front of negative numbers' do
     print(-1).should == 'Minus One'
-  end
-
-  it 'does not accept non-numeric input' do
-    print('abc').should == "Non-numeric input is not supported"
+    print('-100000000').should == 'Minus One Hundred Million'
   end
 
   it 'does not accept numbers with decimals' do
-    print('1.01').should == "Only whole numbers are supported"
+    print('1.01').should include "Only whole numbers are supported\n"
+  end
+
+  context 'non-numeric input' do
+    it 'does not accept non-numeric input' do
+      print('abc').should include "Non-numeric input is not supported\n"
+      print('1abc').should include "Non-numeric input is not supported\n"
+      print('abc1').should include "Non-numeric input is not supported\n"
+    end
   end
 
   context 'single digits' do

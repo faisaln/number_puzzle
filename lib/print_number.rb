@@ -3,10 +3,11 @@ module PrintNumber
 
   def print(input_number)
     @number = input_number
+    pre_process_input
     return error_message if number_of_digits > 9
 
     blocks = three_digit_blocks
-    text = ''
+    text = prefix
     blocks.each_with_index do |b, i|
       @number = b.to_i
       text += "and " if (i == blocks.length - 1 && b[0] == '0' && @number != 0)
@@ -19,6 +20,14 @@ module PrintNumber
 
 
   private
+
+  def pre_process_input
+    @number = @number.to_i
+    if @number < 0
+      @prefix = 'Minus '
+      @number *= -1
+    end
+  end
 
   # processor methods
   def convert_to_text
@@ -85,6 +94,10 @@ module PrintNumber
   #error handling
   def error_message
     "Numbers with more than nine digits are not supported"
+  end
+
+  def prefix
+    @prefix || ''
   end
 
   # data

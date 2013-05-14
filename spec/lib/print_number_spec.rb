@@ -13,6 +13,11 @@ describe PrintNumber do
 
   it 'does not accept numbers with 10 digits or more' do
     print(1000000000).should == "Numbers with more than nine digits are not supported"
+    print(-1000000000).should == "Numbers with more than nine digits are not supported"
+  end
+
+  it 'should add Minus in front of negative numbers' do
+    print(-1).should == 'Minus One'
   end
 
   context 'single digits' do
